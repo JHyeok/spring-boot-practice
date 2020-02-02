@@ -24,3 +24,26 @@
 ![lombok-setting1](./readme-img/lombok-setting1.png)
 02. `File > Settings > Build > Compiler > Annotation Processors`에서 `Enable annotation processing`를 체크한다.
 ![lombok-setting2](./readme-img/lombok-setting2.png)
+
+#### 04. H2 데이터베이스 설정
+
+01. H2 데이터베이스를 먼저 다운로드 받는다. `C:\Program Files (x86)\H2`에서 `build.sh`를 한 번 실행시켜준다.
+![h2-windows](./readme-img/h2-windows.png)
+02. `src/main/resources/application.yml`을 수정한다.
+    ```yaml
+    spring:
+      h2:
+        console:
+          enabled: true
+    ```
+03. `Application.java`를 실행시키고 `http://localhost:8080/h2-console`에 접속을 한다.
+
+    |Value|Setting|
+    |:---:|:---:|
+    |Driver Class|org.h2.Driver|
+    |JDBC URL|jdbc:h2:mem:testdb|
+    |User Name|sa|
+    |Password|<blank>|
+![h2-console](./readme-img/h2-console.png)
+
+Connect를 하면 정상적으로 H2 데이터베이스에 접속된다.
