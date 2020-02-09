@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -28,6 +30,7 @@ public class ArticleRepositoryTest {
     @Test
     public void 게시글저장_불러오기() {
         // given (테스트 기반 환경을 구축하는 단계)
+        LocalDateTime nowDate = LocalDateTime.now();
         articleRepository.save(Article.builder()
                 .title("테스트 제목")
                 .content("본문 내용 테스트 입니다.")
@@ -41,5 +44,7 @@ public class ArticleRepositoryTest {
         Article article = articleList.get(0);
         assertThat(article.getTitle(), is("테스트 제목"));
         assertThat(article.getContent(), is("본문 내용 테스트 입니다."));
+        assertTrue(article.getCreatedDate().isAfter(nowDate));
+        assertTrue(article.getUpdatedDate().isAfter(nowDate));
     }
 }
