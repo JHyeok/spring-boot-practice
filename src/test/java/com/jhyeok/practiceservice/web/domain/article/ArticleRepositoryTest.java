@@ -1,5 +1,6 @@
 package com.jhyeok.practiceservice.web.domain.article;
 
+import com.jhyeok.practiceservice.web.repository.article.ArticleRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
