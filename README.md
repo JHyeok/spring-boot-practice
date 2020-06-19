@@ -47,3 +47,16 @@
 ![h2-console](./readme-img/h2-console.png)
 
 Connect를 하면 정상적으로 H2 데이터베이스에 접속된다.
+
+Postman을 실행해서 아래 처럼 요청을 하면 데이터가 입력된다.
+
+```
+POST http://localhost:8080/article
+Body raw
+{
+    "title": "테스트 내용입니다.",
+    "content": "테스트 컨텐츠입니다.",
+    "author": "김재혁"
+}
+```
+
