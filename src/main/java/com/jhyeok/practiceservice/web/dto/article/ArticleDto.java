@@ -1,4 +1,4 @@
-package com.jhyeok.practiceservice.web.dto;
+package com.jhyeok.practiceservice.web.dto.article;
 
 import com.jhyeok.practiceservice.web.domain.article.Article;
 import lombok.Getter;

@@ -1,7 +1,7 @@
 package com.jhyeok.practiceservice.web.controller;
 
-import com.jhyeok.practiceservice.web.repository.article.ArticleRepository;
-import com.jhyeok.practiceservice.web.dto.ArticleDto;
+import com.jhyeok.practiceservice.web.dto.article.ArticleDto;
+import com.jhyeok.practiceservice.web.service.article.ArticleService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class ArticleController {
 
-    private ArticleRepository articleRepository;
+    private final ArticleService articleService;
 
     @PostMapping("/article")
-    public void createArticle(@RequestBody ArticleDto dto) {
-        articleRepository.save(dto.toEntity());
+    public void createArticle(@RequestBody ArticleDto articleDto) {
+        articleService.save(articleDto);
     }
 }
