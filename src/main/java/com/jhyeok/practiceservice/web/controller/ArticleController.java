@@ -14,7 +14,7 @@ public class ArticleController {
     private final ArticleService articleService;
 
     @PostMapping("/article")
-    public void createArticle(@RequestBody ArticleDto articleDto) {
-        articleService.save(articleDto);
+    public Long createArticle(@RequestBody ArticleDto articleDto) {
+        return articleService.save(articleDto);
     }
 }

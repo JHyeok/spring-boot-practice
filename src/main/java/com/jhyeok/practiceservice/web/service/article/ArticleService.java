@@ -1,5 +1,6 @@
 package com.jhyeok.practiceservice.web.service.article;
 
+import com.jhyeok.practiceservice.web.domain.article.Article;
 import com.jhyeok.practiceservice.web.dto.article.ArticleDto;
 import com.jhyeok.practiceservice.web.repository.article.ArticleRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,8 @@ public class ArticleService {
     private final ArticleRepository articleRepository;
 
     @Transactional
-    public void save(ArticleDto articleDto) {
-        articleRepository.save(articleDto.toEntity());
+    public Long save(ArticleDto articleDto) {
+        Article savedArticle = articleRepository.save(articleDto.toEntity());
+        return savedArticle.getId();
     }
 }

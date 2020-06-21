@@ -15,12 +15,16 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+// JUnit ExtendWith 어노테이션
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class ArticleRepositoryTest {
-
     @Autowired
     ArticleRepository articleRepository;
+
+    private final String TITLE = "테스트 제목";
+    private final String CONTENT = "본문 내용 테스트 입니다.";
+    private final String AUTHOR = "김재혁";
 
     @AfterEach
     public void cleanup() {
@@ -33,9 +37,9 @@ public class ArticleRepositoryTest {
         // given (테스트 기반 환경을 구축하는 단계)
         LocalDateTime nowDate = LocalDateTime.now();
         articleRepository.save(Article.builder()
-                .title("테스트 제목")
-                .content("본문 내용 테스트 입니다.")
-                .author("dev.jhyeok@gmail.com")
+                .title(TITLE)
+                .content(CONTENT)
+                .author(AUTHOR)
                 .build());
 
         // when (테스트 하고자 하는 행위)
@@ -43,8 +47,8 @@ public class ArticleRepositoryTest {
 
         // then (테스트 결과 검증)
         Article article = articleList.get(0);
-        assertThat(article.getTitle(), is("테스트 제목"));
-        assertThat(article.getContent(), is("본문 내용 테스트 입니다."));
+        assertThat(article.getTitle(), is(TITLE));
+        assertThat(article.getContent(), is(CONTENT));
         assertTrue(article.getCreatedDate().isAfter(nowDate));
         assertTrue(article.getUpdatedDate().isAfter(nowDate));
     }
