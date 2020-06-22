@@ -9,16 +9,15 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @AllArgsConstructor
 public class ArticleController {
-
     private final ArticleService articleService;
 
     @PostMapping("/api/article")
-    public Long create(@RequestBody ArticleRequestDto articleRequestDto) {
+    public Long save(@RequestBody ArticleRequestDto articleRequestDto) {
         return articleService.save(articleRequestDto);
     }
 
     @GetMapping("/api/article/{id}")
-    public ArticleResponseDto findById (@PathVariable Long id) {
+    public ArticleResponseDto findById(@PathVariable Long id) {
         return articleService.findById(id);
     }
 }
