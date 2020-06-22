@@ -9,13 +9,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ArticleDto {
+public class ArticleRequestDto {
     private String title;
     private String content;
     private String author;
 
     @Builder
-    private ArticleDto(final String title, final String content, final String author) {
+    private ArticleRequestDto(final String title, final String content, final String author) {
         this.title = title;
         this.content = content;
         this.author = author;

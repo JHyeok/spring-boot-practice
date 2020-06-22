@@ -1,6 +1,6 @@
 package com.jhyeok.practiceservice.web.domain.article;
 
-import com.jhyeok.practiceservice.web.dto.article.ArticleDto;
+import com.jhyeok.practiceservice.web.dto.article.ArticleRequestDto;
 import com.jhyeok.practiceservice.web.repository.article.ArticleRepository;
 import com.jhyeok.practiceservice.web.service.article.ArticleService;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,7 +28,7 @@ public class ArticleServiceTest {
     @Mock
     private ArticleRepository articleRepository;
 
-    private ArticleDto articleDto;
+    private ArticleRequestDto articleRequestDto;
     private Article savedArticle;
 
     private final String TITLE = "테스트 제목";
@@ -37,7 +37,7 @@ public class ArticleServiceTest {
 
     @BeforeEach
     void setUp() {
-        articleDto = ArticleDto.builder()
+        articleRequestDto = ArticleRequestDto.builder()
                 .title(TITLE)
                 .content(CONTENT)
                 .author(AUTHOR)
@@ -56,7 +56,7 @@ public class ArticleServiceTest {
         given(articleRepository.save(any())).willReturn(savedArticle);
 
         // when (테스트 하고자 하는 행위)
-        Long id = articleService.save(articleDto);
+        Long id = articleService.save(articleRequestDto);
 
         // then (테스트 결과 검증)
         assertThat(id).isEqualTo(savedArticle.getId());
