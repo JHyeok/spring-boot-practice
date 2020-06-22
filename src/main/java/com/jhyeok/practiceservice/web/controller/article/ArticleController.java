@@ -1,4 +1,4 @@
-package com.jhyeok.practiceservice.web.controller;
+package com.jhyeok.practiceservice.web.controller.article;
 
 import com.jhyeok.practiceservice.web.dto.article.ArticleRequestDto;
 import com.jhyeok.practiceservice.web.dto.article.ArticleResponseDto;
