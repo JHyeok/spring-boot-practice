@@ -15,12 +15,24 @@ import java.util.NoSuchElementException;
 public class ArticleService {
     private final ArticleRepository articleRepository;
 
+    /**
+     * Article 생성하기
+     *
+     * @param articleRequestDto 생성할 Article Dto
+     * @return 생성한 Article id
+     */
     @Transactional
     public Long save(ArticleRequestDto articleRequestDto) {
         Article savedArticle = articleRepository.save(articleRequestDto.toEntity());
         return savedArticle.getId();
     }
 
+    /**
+     * Article 조회하기
+     *
+     * @param id Article id
+     * @return Article id에 해당하는 ArticleResponseDto
+     */
     @Transactional(readOnly = true)
     public ArticleResponseDto findById(Long id) {
         Article article = articleRepository.findById(id)
